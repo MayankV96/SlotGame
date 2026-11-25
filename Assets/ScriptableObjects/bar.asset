@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 730412ba5f15342aaa2985af4dac8e36, type: 3}
   m_Name: bar
   m_EditorClassIdentifier: Assembly-CSharp::SymbolData
-  sprite: {fileID: 0}
-  weight: 10
-  payoutMultiplier: 5
+  sprite: {fileID: -4945717182177459964, guid: d54739fcc3cbb47efaf424fbd551a3fe, type: 3}
+  weight: 15
+  payoutMultiplier: 10

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Cherry
   m_EditorClassIdentifier: Assembly-CSharp::SymbolData
   sprite: {fileID: -5620835742497143143, guid: aa6a7f587d9fb40e295f11bec613e538, type: 3}
-  weight: 10
-  payoutMultiplier: 5
+  weight: 30
+  payoutMultiplier: 2

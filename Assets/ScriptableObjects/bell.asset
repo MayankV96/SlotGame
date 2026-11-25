@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 730412ba5f15342aaa2985af4dac8e36, type: 3}
   m_Name: bell
   m_EditorClassIdentifier: Assembly-CSharp::SymbolData
-  sprite: {fileID: 0}
-  weight: 10
+  sprite: {fileID: -2391669244243282240, guid: 0d0b65f63e47a4efa985f46ad0330a25, type: 3}
+  weight: 20
   payoutMultiplier: 5

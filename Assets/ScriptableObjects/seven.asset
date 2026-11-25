@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 730412ba5f15342aaa2985af4dac8e36, type: 3}
   m_Name: seven
   m_EditorClassIdentifier: Assembly-CSharp::SymbolData
-  sprite: {fileID: 0}
+  sprite: {fileID: 2193077994593488821, guid: b8197fa3a2ff94f9fbc2ddc7e6191df1, type: 3}
   weight: 10
-  payoutMultiplier: 5
+  payoutMultiplier: 20
