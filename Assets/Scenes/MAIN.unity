@@ -877,6 +877,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0b5a8d4a909c84175aa1b5ef1026982f, type: 2}
   - {fileID: 11400000, guid: 800de021c6cbf43deac2ec0775150508, type: 2}
   - {fileID: 11400000, guid: c1d12ec8f8acf48478805f01ba03f7a1, type: 2}
+  - {fileID: 11400000, guid: 8297dda6ed5544a9ea4ff7c053646ff2, type: 2}
   reels:
   - {fileID: 260977459}
   - {fileID: 237795143}
@@ -886,6 +887,10 @@ MonoBehaviour:
   winText: {fileID: 1217861450}
   balance: 1000
   bet: 10
+  audioSource: {fileID: 0}
+  spinClip: {fileID: 0}
+  stopClip: {fileID: 0}
+  winClip: {fileID: 0}
 --- !u!4 &575189483
 Transform:
   m_ObjectHideFlags: 0
@@ -1521,11 +1526,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 726394806}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

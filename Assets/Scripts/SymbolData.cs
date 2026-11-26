@@ -10,4 +10,6 @@ public class SymbolData : ScriptableObject
     public Sprite sprite;               // the picture shown on the reel
     public int weight = 10;             // bigger number = appears more often
     public int payoutMultiplier = 5;    // win amount = bet x this number
+    public bool isWild;  
+    
 }

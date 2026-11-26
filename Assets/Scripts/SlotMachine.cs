@@ -81,13 +81,10 @@ public class SlotMachine : MonoBehaviour
         yield return new WaitUntil(() => stillSpinning == 0);
 
         // 3) Check the middle row (row index 1). All the same = win.
-        bool allSame = true;
-        for (int r = 1; r < reels.Length; r++)
-        {
-            if (results[r][1] != results[0][1]) allSame = false;
-        }
-
-        int win = allSame ? bet * results[0][1].payoutMultiplier : 0;
+               // 3) Check the middle row (row index 1). Wilds count as any symbol.
+        var payline = new SymbolData[reels.Length];
+        for (int r = 0; r < reels.Length; r++) payline[r] = results[r][1];
+        int win = CalculateWin(payline);
         balance += win;
         UpdateUI(win > 0 ? "WIN " + win : "Try again");
 
@@ -123,6 +120,25 @@ public class SlotMachine : MonoBehaviour
         winText.rectTransform.localScale = Vector3.one;
     }
 
+
+        // Returns the payout for one payline. A wild matches any symbol.
+    private int CalculateWin(SymbolData[] payline)
+    {
+        // The first non-wild symbol decides what we need to match.
+        SymbolData target = null;
+        foreach (var s in payline)
+        {
+            if (!s.isWild) { target = s; break; }
+        }
+        if (target == null) target = payline[0];   // every symbol is a wild
+
+        // Any symbol that is neither the target nor a wild means no win.
+        foreach (var s in payline)
+        {
+            if (s != target && !s.isWild) return 0;
+        }
+        return bet * target.payoutMultiplier;
+    }
     // Safe to call even if no sound is assigned.
     private void PlaySound(AudioClip clip)
     {
