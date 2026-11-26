@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 /// <summary>
 /// Main game controller: picks random results (RNG), spins the reels,
-/// checks for a win and updates the balance.
+/// checks for a win, updates the balance, and plays feedback effects.
 /// </summary>
 public class SlotMachine : MonoBehaviour
 {
@@ -17,6 +17,12 @@ public class SlotMachine : MonoBehaviour
     [SerializeField] private TMP_Text winText;
     [SerializeField] private int balance = 1000;
     [SerializeField] private int bet = 10;
+
+    [Header("Audio (optional - leave empty if you have no sounds)")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip spinClip;
+    [SerializeField] private AudioClip stopClip;
+    [SerializeField] private AudioClip winClip;
 
     private bool isSpinning;
 
@@ -55,6 +61,7 @@ public class SlotMachine : MonoBehaviour
         spinButton.interactable = false;
         balance -= bet;
         UpdateUI("");
+        PlaySound(spinClip);
 
         // 1) Decide the final result FIRST (3 reels x 3 rows).
         var results = new SymbolData[reels.Length][];
@@ -84,6 +91,12 @@ public class SlotMachine : MonoBehaviour
         balance += win;
         UpdateUI(win > 0 ? "WIN " + win : "Try again");
 
+        if (win > 0)
+        {
+            PlaySound(winClip);
+            StartCoroutine(PulseWinText());
+        }
+
         isSpinning = false;
         spinButton.interactable = true;
     }
@@ -91,7 +104,29 @@ public class SlotMachine : MonoBehaviour
     private IEnumerator RunReel(Reel reel, SymbolData[] result, float time, System.Action onDone)
     {
         yield return reel.Spin(result, time, GetRandomSymbol);
+        PlaySound(stopClip);
         onDone();
+    }
+
+    // Makes the win text grow and shrink once, so a win feels rewarding.
+    private IEnumerator PulseWinText()
+    {
+        const float duration = 0.6f;
+        float t = 0f;
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            float scale = 1f + 0.3f * Mathf.Sin(t / duration * Mathf.PI);
+            winText.rectTransform.localScale = Vector3.one * scale;
+            yield return null;
+        }
+        winText.rectTransform.localScale = Vector3.one;
+    }
+
+    // Safe to call even if no sound is assigned.
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSource != null && clip != null) audioSource.PlayOneShot(clip);
     }
 
     private void UpdateUI(string message)
