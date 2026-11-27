@@ -8,7 +8,7 @@ A 3-reel slot machine built in Unity. Press **SPIN** to spin the reels. You win 
 - Weighted random symbols (rare symbols pay more)
 
 ## Play Online
-[Add your GitHub Pages link here]
+https://mayankv96.github.io/SlotGame/Build/WebGL/
 
 ## Run the WebGL Build Locally
 Browsers block opening `index.html` directly. Use a local server:
@@ -43,8 +43,7 @@ Assets/
   Scenes/             Main
 Build/WebGL/          WebGL build
 ```
-## GAME LINK
-https://mayankv96.github.io/SlotGame/Build/WebGL/
+
 ## Credits
 [Asset pack and any sounds used]
 
